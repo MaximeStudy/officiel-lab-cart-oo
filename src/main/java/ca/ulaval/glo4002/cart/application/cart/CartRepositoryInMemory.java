@@ -7,7 +7,7 @@ import ca.ulaval.glo4002.cart.domain.cart.Cart;
 
 public class CartRepositoryInMemory implements CartRepository {
 
-	ArrayList<Cart> listOfCart = new ArrayList<Cart>();
+	private ArrayList<Cart> listOfCart = new ArrayList<Cart>();
 	
 	@Override
 	public List<Cart> retrieveCarts() {

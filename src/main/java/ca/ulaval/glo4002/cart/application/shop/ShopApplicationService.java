@@ -8,12 +8,13 @@ import ca.ulaval.glo4002.cart.domain.shop.FragileShopItem;
 import ca.ulaval.glo4002.cart.domain.shop.PrimeShopItem;
 import ca.ulaval.glo4002.cart.domain.shop.ShopItem;
 import ca.ulaval.glo4002.cart.domain.shop.StandardShopItem;
+import ca.ulaval.glo4002.cart.interfaces.rest.PersistenceProvider;
 
 public class ShopApplicationService {
     private final ShopRepository shopRepository;
 
     public ShopApplicationService() {
-        this.shopRepository = new ShopRepository();
+        this.shopRepository = PersistenceProvider.getShopRepository();
     }
 
     public List<ShopItem> listAvailableItems() {
