@@ -11,6 +11,7 @@ import javax.ws.rs.core.Response;
 
 import ca.ulaval.glo4002.cart.application.cart.CartApplicationService;
 import ca.ulaval.glo4002.cart.application.shop.ShopApplicationService;
+import ca.ulaval.glo4002.cart.context.ContextProvider;
 import ca.ulaval.glo4002.cart.domain.cart.Cart;
 import ca.ulaval.glo4002.cart.domain.shop.ShopItem;
 
@@ -25,8 +26,8 @@ public class CartResource {
 	private ShopApplicationService shopService;
 
 	public CartResource() {
-		this.cartService = new CartApplicationService();
-		this.shopService = new ShopApplicationService();
+		this.cartService = ContextProvider.getInstance().getCartApplicationService();
+		this.shopService = ContextProvider.getInstance().getShopApplicationService();
 	}
 
 	@GET

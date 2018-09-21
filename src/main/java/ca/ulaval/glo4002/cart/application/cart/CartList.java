@@ -2,12 +2,10 @@ package ca.ulaval.glo4002.cart.application.cart;
 
 import java.util.List;
 
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import ca.ulaval.glo4002.cart.domain.cart.Cart;
-import ca.ulaval.glo4002.cart.domain.cart.CartItem;
 
 @XmlRootElement
 public class CartList {

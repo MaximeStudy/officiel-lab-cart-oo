@@ -23,6 +23,7 @@ public class CartServer implements Runnable {
 		Server server = new Server(PORT);
 		ServletContextHandler contextHandler = new ServletContextHandler(server, "/");
 
+		
 		// Configuration manuelle au lieu du package scanning
 		ResourceConfig packageConfig = new ResourceConfig()
 				.registerInstances(createClientResource(), createCartResource())
