@@ -5,13 +5,14 @@ import java.util.List;
 import ca.ulaval.glo4002.cart.domain.cart.Cart;
 import ca.ulaval.glo4002.cart.domain.cart.CartItem;
 import ca.ulaval.glo4002.cart.domain.shop.ShopItem;
+import ca.ulaval.glo4002.cart.interfaces.rest.PersistenceProvider;
 
 public class CartApplicationService {
 
     private CartRepository cartRepository;
 
 	public CartApplicationService() {
-		this.cartRepository = new CartRepository();
+		this.cartRepository = PersistenceProvider.getCartRepository();
 	}
 
 	public Cart findOrCreateCartForClient(String email) {
