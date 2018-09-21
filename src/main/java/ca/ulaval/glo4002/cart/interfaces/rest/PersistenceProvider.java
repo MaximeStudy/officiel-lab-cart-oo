@@ -13,7 +13,7 @@ public class PersistenceProvider {
     	
     	CartRepository cartRepository;
     	
-        if (System.getProperty("store").equalsIgnoreCase("xml")) {
+        if (storeParameterPropertyIsXml()) {
         	cartRepository = new CartRepositoryXML();
         } 
         else {
@@ -27,7 +27,7 @@ public class PersistenceProvider {
     	
     	ShopRepository shopRepository;
     	
-        if (System.getProperty("store").equalsIgnoreCase("xml")) {
+        if (storeParameterPropertyIsXml()) {
         	shopRepository = new ShopRepositoryXML();
         } 
         else {
@@ -35,5 +35,9 @@ public class PersistenceProvider {
         }
         
 		return shopRepository;
+    }
+    
+    private static boolean storeParameterPropertyIsXml() {
+    	return System.getProperty("store").equalsIgnoreCase("xml");
     }
 }
