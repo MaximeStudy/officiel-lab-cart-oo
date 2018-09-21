@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
+import ca.ulaval.glo4002.cart.domain.shop.FragileShopItem;
 import ca.ulaval.glo4002.cart.domain.shop.PrimeShopItem;
 import ca.ulaval.glo4002.cart.domain.shop.ShopItem;
 import ca.ulaval.glo4002.cart.domain.shop.StandardShopItem;
@@ -40,6 +41,7 @@ public class ShopApplicationService {
         addItem(new StandardShopItem("276101", "Imprimante 3D", 2341, 31, 0.60, true));
         addItem(new PrimeShopItem("818113", "GoPro", 650, 1, 4.60, true));
         addItem(new StandardShopItem("51-153", "Peinture à numéro", 1, 2, 1.40, true));
+        addItem(new FragileShopItem("14568", "Victor", 1, 2, 1, true));
     }
 
     private void addItem(ShopItem item) {

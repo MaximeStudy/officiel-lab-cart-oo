@@ -61,17 +61,28 @@ public class PrimeShopItem extends ShopItem {
     }
 
     @Override
+	public int getWeight() {
+	    return weight;
+	}
+	
+	@Override
+	public boolean isPrime() {
+	    return true;
+	}
+	
+	@Override
+	public int getPriceWithShippingCost() {
+		int totalPrice = getPrice() + getShippingCost();
+		return totalPrice;
+	}
+	
+	@Override
     public int getPrice() {
         return price;
     }
-
-    @Override
-    public int getWeight() {
-        return weight;
-    }
-
-    @Override
-    public boolean isPrime() {
-        return true;
-    }
+	
+	@Override
+	public int getShippingCost() {
+		return 0;
+	}
 }

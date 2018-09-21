@@ -6,7 +6,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class StandardShopItem extends ShopItem {
 
-    @XmlElement
+    private static final int SHIPPING_PRICE_PER_KG = 2;
+
+	@XmlElement
     @JsonProperty
     private String itemSku;
 
@@ -59,19 +61,31 @@ public class StandardShopItem extends ShopItem {
     public boolean hasSku(String sku) {
         return this.itemSku.equals(sku);
     }
-
+    
+    @Override
+    public boolean isPrime() {
+        return false;
+    }
+    
+    @Override
+	public int getPriceWithShippingCost() {
+		int totalPrice = getPrice() + getShippingCost();
+		return totalPrice;
+	}
+    
     @Override
     public int getPrice() {
         return price;
     }
 
     @Override
+	public int getShippingCost() {
+		int shippingPrice = getWeight() * SHIPPING_PRICE_PER_KG;
+		return shippingPrice;
+	}
+    
+    @Override
     public int getWeight() {
         return weight;
-    }
-
-    @Override
-    public boolean isPrime() {
-        return false;
-    }
+    }	
 }

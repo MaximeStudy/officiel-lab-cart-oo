@@ -2,7 +2,7 @@ package ca.ulaval.glo4002.cart.domain.shop;
 
 import javax.xml.bind.annotation.XmlSeeAlso;
 
-@XmlSeeAlso({StandardShopItem.class, PrimeShopItem.class})
+@XmlSeeAlso({StandardShopItem.class, PrimeShopItem.class, FragileShopItem.class})
 public abstract class ShopItem {
     public abstract String getName();
 
@@ -15,4 +15,8 @@ public abstract class ShopItem {
     public abstract int getWeight();
 
     public abstract boolean isPrime();
+    
+    public abstract int getShippingCost();
+    
+    public abstract int getPriceWithShippingCost();
 }
