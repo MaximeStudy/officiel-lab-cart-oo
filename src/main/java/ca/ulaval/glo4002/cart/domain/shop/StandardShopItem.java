@@ -62,10 +62,6 @@ public class StandardShopItem extends ShopItem {
         return this.itemSku.equals(sku);
     }
     
-    @Override
-    public boolean isPrime() {
-        return false;
-    }
     
     @Override
 	public int getPriceWithShippingCost() {
@@ -80,12 +76,8 @@ public class StandardShopItem extends ShopItem {
 
     @Override
 	public int getShippingCost() {
-		int shippingPrice = getWeight() * SHIPPING_PRICE_PER_KG;
+		int shippingPrice = weight * SHIPPING_PRICE_PER_KG;
 		return shippingPrice;
 	}
     
-    @Override
-    public int getWeight() {
-        return weight;
-    }	
 }

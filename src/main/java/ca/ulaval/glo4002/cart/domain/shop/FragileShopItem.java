@@ -63,11 +63,6 @@ public class FragileShopItem extends ShopItem {
         return this.itemSku.equals(sku);
     }
 
-    @Override
-    public boolean isPrime() {
-        return false;
-    }
-
 	@Override
 	public int getPriceWithShippingCost() {
 		int totalPrice = getPrice() + getShippingCost();
@@ -81,12 +76,8 @@ public class FragileShopItem extends ShopItem {
 	
 	@Override
 	public int getShippingCost() {
-		int shippingPrice = getWeight() * SHIPPING_PRICE_PER_KG + EXTRA_FRAGILE_COST;
+		int shippingPrice = weight * SHIPPING_PRICE_PER_KG + EXTRA_FRAGILE_COST;
 		return shippingPrice;
 	}
-	
-	@Override
-	public int getWeight() {
-	    return weight;
-	}
+
 }

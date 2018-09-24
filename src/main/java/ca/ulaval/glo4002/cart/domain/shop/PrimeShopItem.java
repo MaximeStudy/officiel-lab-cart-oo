@@ -59,16 +59,6 @@ public class PrimeShopItem extends ShopItem {
     public boolean hasSku(String sku) {
         return this.itemSku.equals(sku);
     }
-
-    @Override
-	public int getWeight() {
-	    return weight;
-	}
-	
-	@Override
-	public boolean isPrime() {
-	    return true;
-	}
 	
 	@Override
 	public int getPriceWithShippingCost() {

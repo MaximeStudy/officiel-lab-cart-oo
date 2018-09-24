@@ -11,10 +11,6 @@ public abstract class ShopItem {
     public abstract boolean hasSku(String sku);
 
     public abstract int getPrice();
-
-    public abstract int getWeight();
-
-    public abstract boolean isPrime();
     
     public abstract int getShippingCost();
     
