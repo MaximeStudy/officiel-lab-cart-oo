@@ -7,16 +7,24 @@ import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.servlet.ServletContainer;
 
 import ca.ulaval.glo4002.cart.application.shop.ItemNotFoundException;
+import ca.ulaval.glo4002.cart.context.ApplicationContext;
 import ca.ulaval.glo4002.cart.interfaces.rest.CartResource;
 import ca.ulaval.glo4002.cart.interfaces.rest.ShopResource;
 import ca.ulaval.glo4002.cart.interfaces.rest.PersistenceExceptionMapper;
 import ca.ulaval.glo4002.cart.interfaces.rest.filters.CORSFilter;
 
-public class CartServer implements Runnable {
+public class CartServer {
 	private static final int PORT = 7222;
 
+	private ApplicationContext applicationContext;
+	
+	public CartServer() {
+		this.applicationContext = new ApplicationContext();
+	}
+	
 	public static void main(String[] args) {
-		new CartServer().run();
+		//new CartServer().run();
+		new ApplicationContext().run();
 	}
 
 	public void run() {
@@ -24,11 +32,11 @@ public class CartServer implements Runnable {
 		ServletContextHandler contextHandler = new ServletContextHandler(server, "/");
 
 		
-		// Configuration manuelle au lieu du package scanning
+		// Configuration manuelle au lieu du package scanning -> mettre ca dans le contexte
 		ResourceConfig packageConfig = new ResourceConfig()
 				.registerInstances(createClientResource(), createCartResource())
 				.registerInstances(new PersistenceExceptionMapper(), new ItemNotFoundException())
-				.register(new CORSFilter());
+				.register(new CORSFilter()); 
 
 		ServletContainer container = new ServletContainer(packageConfig);
 		ServletHolder servletHolder = new ServletHolder(container);
@@ -46,10 +54,10 @@ public class CartServer implements Runnable {
 	}
 
 	private CartResource createCartResource() {
-		return new CartResource();
+		return new CartResource(applicationContext.getCartApplicationService(), applicationContext.getShopApplicationService());
 	}
 
 	private Object createClientResource() {
-		return new ShopResource();
+		return new ShopResource(applicationContext.getShopApplicationService());
 	}
 }

@@ -8,6 +8,7 @@ import ca.ulaval.glo4002.cart.application.shop.ShopApplicationService;
 import ca.ulaval.glo4002.cart.application.shop.ShopApplicationServiceDemo;
 import ca.ulaval.glo4002.cart.application.shop.ShopApplicationServiceProd;
 
+//TODO Delete useless class
 public class ContextProvider {
 	private static ContextProvider uniqueInstanceOfProvider = null;
 	
@@ -21,6 +22,7 @@ public class ContextProvider {
 		}
 		return uniqueInstanceOfProvider;
 	}
+	
 	private ContextProvider() {
 		setCartApplicationService();
 		setShopApplicationService();

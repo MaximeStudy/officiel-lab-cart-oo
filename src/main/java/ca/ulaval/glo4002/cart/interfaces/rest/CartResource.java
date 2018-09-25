@@ -25,9 +25,9 @@ public class CartResource {
 	private CartApplicationService cartService;
 	private ShopApplicationService shopService;
 
-	public CartResource() {
-		this.cartService = ContextProvider.getInstance().getCartApplicationService();
-		this.shopService = ContextProvider.getInstance().getShopApplicationService();
+	public CartResource(CartApplicationService cartService, ShopApplicationService shopService) {
+		this.cartService = cartService;
+		this.shopService = shopService;
 	}
 
 	@GET
