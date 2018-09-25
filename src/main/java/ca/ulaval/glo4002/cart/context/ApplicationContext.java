@@ -55,8 +55,6 @@ public class ApplicationContext implements Runnable {
 			server.destroy();
 		}
 	}
-	
-	
 	private void setCartApplicationService() {		
 	    if (modeParameterPropertyIsDemo()) {
 	    	cartApplicationService = new CartApplicationServiceDemo();
@@ -80,19 +78,12 @@ public class ApplicationContext implements Runnable {
 		return System.getProperty("mode").equalsIgnoreCase("demo");
 	}
 	
-	public CartApplicationService getCartApplicationService() {
-		return cartApplicationService;
-	}
-	
-	public ShopApplicationService getShopApplicationService() {
-		return shopApplicationService;
-	}
-	
 	private CartResource createCartResource() {
 		return new CartResource(cartApplicationService, shopApplicationService);
 	}
 
-	private Object createClientResource() {
+	private ShopResource createClientResource() {
 		return new ShopResource(shopApplicationService);
 	}
+	
 }
